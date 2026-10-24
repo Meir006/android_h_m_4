@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.compose.material3.Icon
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -72,7 +73,18 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center
     ) {
 
+
+
+
     }
+}
+
+@Composable
+fun ImageState(@DrawableRes image: Int, modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = image),
+        contentDescription = null,
+        modifier = modifier.fillMaxWidth())
 }
 
 
