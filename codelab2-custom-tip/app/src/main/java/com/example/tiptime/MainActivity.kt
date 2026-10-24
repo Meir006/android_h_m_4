@@ -22,6 +22,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,11 +31,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -73,6 +76,7 @@ class MainActivity : ComponentActivity() {
 fun TipTimeLayout() {
     var amountInput by remember { mutableStateOf("") }
     var tipInput by remember { mutableStateOf("") }
+    var roundUp by remember { mutableStateOf(false) }
 
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipAmount = tipInput.toDoubleOrNull() ?: 0.0
@@ -108,11 +112,15 @@ fun TipTimeLayout() {
         EditNumberField(
             label = R.string.how_was_the_service,
             value = tipInput,
-            onValueChange = { tipInput = it },keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number,imeAction = ImeAction.Done),
+            onValueChange = { tipInput = it },
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done),
             modifier = Modifier
                 .padding(bottom = 40.dp)
                 .fillMaxWidth()
         )
+        RoundTheTipRow(roundUp = roundUp, onRoundUpChanged = { roundUp = it }, modifier = Modifier.padding(bottom = 32.dp))
 
         Text(
             text = stringResource(R.string.tip_amount, tip),
@@ -137,6 +145,19 @@ fun EditNumberField(@StringRes label: Int,
         modifier = modifier
     )
 
+}
+
+@Composable
+fun RoundTheTipRow(roundUp: Boolean, onRoundUpChanged: (Boolean) -> Unit,modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .size(48.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = stringResource(R.string.round_up_tip))
+        Switch(checked = roundUp, onCheckedChange = onRoundUpChanged,modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.End))
+    }
 }
 
 
