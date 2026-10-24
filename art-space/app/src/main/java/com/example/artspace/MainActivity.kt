@@ -8,6 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.material3.Icon
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -75,7 +77,9 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center
     ) {
     ImageState(artwork.imageRes)
-
+    Spacer(modifier = Modifier.height(40.dp))
+        ArtworkTextInfo(artwork.titleRes, artwork.artistRes, artwork.yearRes)
+    Spacer(modifier = Modifier.height(20.dp))
 
 
     }
@@ -87,6 +91,33 @@ fun ImageState(@DrawableRes image: Int, modifier: Modifier = Modifier){
         painter = painterResource(id = image),
         contentDescription = null,
         modifier = modifier.fillMaxWidth())
+}
+@Composable
+fun ArtworkTextInfo(
+    @StringRes title: Int,
+    @StringRes artist: Int,
+    @StringRes year: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier.padding(16.dp).background(MaterialTheme.colorScheme.surfaceVariant)) {
+        Text(
+            modifier = modifier.fillMaxWidth(),
+            text = stringResource(id = title),
+            style = MaterialTheme.typography.titleLarge
+        )
+        Row(modifier = modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center) {
+            Text(
+                text = stringResource(id = artist),
+                style = MaterialTheme.typography.labelMedium
+            )
+            Text(
+                text = " (${stringResource(id = year)})",
+                style = MaterialTheme.typography.labelMedium
+            )
+        }
+    }
 }
 
 
