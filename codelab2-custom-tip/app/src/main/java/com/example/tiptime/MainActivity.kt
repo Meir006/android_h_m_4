@@ -104,12 +104,12 @@ fun TipTimeLayout() {
 
 
 @Composable
-fun EditNumberField(value: String, onValueChange: (String) -> Unit,modifier: Modifier = Modifier) {
+fun EditNumberField(label: Int,value: String, onValueChange: (String) -> Unit,modifier: Modifier = Modifier) {
     TextField(
         value = value,
         onValueChange = onValueChange,
         singleLine = true,
-        label = { Text(stringResource(R.string.bill_amount)) },
+        label = { Text(stringResource(label)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = modifier
     )
