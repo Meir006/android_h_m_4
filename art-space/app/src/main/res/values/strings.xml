@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">ArtSpace</string>
+
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="title_1">Self-Portrait with a Straw Hat</string>
+    <string name="artist_1">Vincent van Gogh</string>
+    <string name="year_1">1887</string>
+
+    <string name="title_2">Washington Crossing the Delaware</string>
+    <string name="artist_2">Emanuel Leutze</string>
+    <string name="year_2">1851</string>
+
+    <string name="title_3">The Little Fourteen-Year-Old Dancer</string>
+    <string name="artist_3">Edgar Degas</string>
+    <string name="year_3">1881</string>
+
+    <string name="title_4">Under the Wave off Kanagawa (The Great Wave)</string>
+    <string name="artist_4">Katsushika Hokusai</string>
+    <string name="year_4">1830-32</string>
+
+    <string name="title_5">Autumn Rhythm: Number 30</string>
+    <string name="artist_5">Jackson Pollock</string>
+    <string name="year_5">1950</string>
+
+    <string name="title_6">Название шестой картины</string>
+    <string name="artist_6">Автор</string>
+    <string name="year_6">Год</string>
 </resources>
