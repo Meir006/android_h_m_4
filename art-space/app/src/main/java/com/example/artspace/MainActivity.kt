@@ -53,8 +53,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ArtSpaceTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    ArtSpaceLayout(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -64,17 +63,23 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+fun ArtSpaceLayout(modifier: Modifier = Modifier) {
+    Column(
         modifier = modifier
-    )
+            .padding(40.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun ArtSpacePreview() {
     ArtSpaceTheme {
-        Greeting("Android")
+        ArtSpaceLayout()
     }
-}
+    }
