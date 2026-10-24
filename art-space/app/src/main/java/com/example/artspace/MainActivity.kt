@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -80,6 +81,18 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
     Spacer(modifier = Modifier.height(40.dp))
         ArtworkTextInfo(artwork.titleRes, artwork.artistRes, artwork.yearRes)
     Spacer(modifier = Modifier.height(20.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Button(onClick = { stateOfArtwork = (stateOfArtwork - 1 + artworks.size) % artworks.size},modifier = modifier.weight(1f)){
+                Text(text = "Previous")
+            }
+            Button(onClick = { stateOfArtwork = (stateOfArtwork + 1) % artworks.size},modifier = modifier.weight(1f)){
+                Text(text = "Next")
+            }
+
+        }
 
 
     }
