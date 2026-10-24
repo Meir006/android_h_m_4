@@ -45,6 +45,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.jetbrains.annotations.VisibleForTesting
@@ -122,6 +123,7 @@ fun ArtworkTextInfo(
     Column(modifier = modifier.padding(16.dp).background(MaterialTheme.colorScheme.surfaceVariant)) {
         Text(
             modifier = modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center,
             text = stringResource(id = title),
             style = MaterialTheme.typography.titleLarge
         )
