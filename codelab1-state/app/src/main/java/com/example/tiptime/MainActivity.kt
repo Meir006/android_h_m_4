@@ -33,6 +33,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -89,8 +90,8 @@ fun TipTimeLayout() {
 
 @Composable
 fun EditNumberField(modifier: Modifier= Modifier){
-    val amountInput = "0";
-    TextField(value = amountInput, onValueChange = {},modifier = modifier)
+    var amountInput = remember { mutableStateOf("") }
+    TextField(value = amountInput.value, onValueChange = {},modifier = modifier)
 }
 
 /**
