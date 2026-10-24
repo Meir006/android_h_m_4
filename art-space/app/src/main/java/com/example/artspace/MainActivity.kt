@@ -65,6 +65,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceLayout(modifier: Modifier = Modifier) {
+    var stateOfArtwork by remember { mutableStateOf(0) }
+    val artwork = artworks[stateOfArtwork]
     Column(
         modifier = modifier
             .padding(40.dp)
@@ -72,7 +74,7 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
+    ImageState(artwork.imageRes)
 
 
 
@@ -86,6 +88,8 @@ fun ImageState(@DrawableRes image: Int, modifier: Modifier = Modifier){
         contentDescription = null,
         modifier = modifier.fillMaxWidth())
 }
+
+
 
 
 @Preview(showBackground = true)
